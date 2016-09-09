@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Draggable - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <style>
+      .start1 { position: fixed; left: 0px; top: 432px; }
+      .start2 { position: fixed; left: 50px; top: 400px; }
+      .start3 { position: fixed; left: 100px; top: 432px; }
+      .start4 { position: fixed; left: 200px; top: 432px; }
+      .start5 { position: fixed; right: 0px; top: 432px; }
+
+
+      * { box-sizing: border-box; }
+      body, figure { margin: 0; }
+      img { display: block; width: 100%; }
+
+      @media (min-width: 12em) {
+        figure {
+          display: block;
+          float: left;
+          width: 33.3333333333333%;
+        }
+      }
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="https://digital.nightspublications.com/js/jquery.ui.touch-punch.min.js"></script>
+    <script>
+
+
+
+      $( function() {
+        $( "#image2" ).draggable({ snap: ".ui-widget-image2", snapMode: "inner" });
+      } );
+
+      $( function() {
+        $( "#image4" ).draggable({ snap: ".ui-widget-image4", snapMode: "inner" });
+      } );
+
+      $( function() {
+        $( "#image5" ).draggable({ snap: ".ui-widget-image5", snapMode: "inner" });
+      } );
+
+      $( function() {
+        $( "#image6" ).draggable({ snap: ".ui-widget-image6", snapMode: "inner" });
+      } );
+
+      $( function() {
+        $( "#image8" ).draggable({ snap: ".ui-widget-image8", snapMode: "inner" });
+      } );
+
+    </script>
+  </head>
+
+  <body>
+
+    <figure>
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_01.png"/>
+    </figure>
+
+    <figure id="snaptarget" class="ui-widget-image2">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_02.png"/>
+    </figure>
+
+    <figure>
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_03.png"/>
+    </figure>
+
+    <figure id="snaptarget" class="ui-widget-image4">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_04.png"/>
+    </figure>
+
+    <figure id="snaptarget" class="ui-widget-image5">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_05.png"/>
+    </figure>
+
+    <figure id="snaptarget" class="ui-widget-image6">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_06.png"/>
+    </figure>
+
+    <figure>
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_07.png"/>
+    </figure>
+
+    <figure id="snaptarget" class="ui-widget-image8">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_08.png"/>
+    </figure>
+
+    <figure>
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_09.png"/>
+    </figure>
+
+   
+
+
+    <figure id="image6" class="start1">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_06.png"/>
+    </figure>
+
+    <figure id="image2" class="start2">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_02.png"/>
+    </figure>
+
+    <figure id="image8" class="start3">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_08.png"/>
+    </figure>
+
+    <figure id="image5" class="start4">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_05.png"/>
+    </figure>
+
+    <figure id="image4" class="start5">
+      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_04.png"/>
+    </figure>
+
+   
+   
+  </body>
+</html>
