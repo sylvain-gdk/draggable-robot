@@ -17,7 +17,7 @@
 
       * { box-sizing: border-box; }
       body, figure { margin: 0; }
-      img { display: block; width: 100%;}
+      img, button { display: block; width: 100%;}
 
       @media (min-width: 12em) {
         figure {
@@ -26,6 +26,8 @@
           width: 33%;
         }
       }
+
+      button {width: 50%; margin-top: 10px; margin-left: 25%; margin-right: 25%}
 
     </style>
 
@@ -47,6 +49,8 @@
             }
             var animate = document.getElementById("animate");
             animate.src = "http://digital.nightspublications.com/ar/images/robot-character_ANIME.gif";
+            var again = document.getElementsByTagName("button");
+            again.innerHTML = "Jouer encore?!";
           }
         }
       }
@@ -179,7 +183,9 @@
       <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_04.png"/>
     </figure>
 
-
+    <button style="font-size: 30px" onclick="location.href='file:///home/sgoedike/lighthouse/draggable-robot/draggable.html';">
+      Recommencer
+    </button>
 
   </body>
 </html>
