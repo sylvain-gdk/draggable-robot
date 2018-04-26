@@ -8,11 +8,24 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
 
     <style>
-      .start1 { position: fixed; left: 0px; top: 432px; }
-      .start2 { position: fixed; left: 50px; top: 400px; }
-      .start3 { position: fixed; left: 100px; top: 432px; }
-      .start4 { position: fixed; left: 200px; top: 432px; }
-      .start5 { position: fixed; right: 0px; top: 432px; }
+      .start { position: fixed; left: 0; top: 432px; }
+
+      .rotate90 {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+      .rotate180 {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      .rotate270 {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+      }
+      .rotate360 {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
 
 
       * { box-sizing: border-box; }
@@ -41,76 +54,95 @@
       function compare(id, ui, target){
         if((Math.floor(ui.position.top) == target.offsetTop || Math.ceil(ui.position.top) == target.offsetTop) && (Math.floor(ui.position.left) == target.offsetLeft || Math.ceil(ui.position.Left) == target.offsetLeft)){
           count++;
+          console.log(count);
           $( id ).draggable( "disable" );
-          if(count > 5){
-            var hide = document.getElementsByTagName("img");
-            for(var i = 0; i < hide.length; i++){
-              hide[i].src = "";
-            }
+          switch(count){
+            case 2:
+              document.getElementById("img2").src = "./images/robot-character_BCKG2.png";
+              break;
+            case 3:
+              document.getElementById("img3").src = "./images/robot-character_BCKG3.png";
+              break;
+            case 4:
+              document.getElementById("img4").src = "./images/robot-character_BCKG4.png";
+              break;
+            case 5:
+              document.getElementById("img5").src = "./images/robot-character_BCKG5.png";
+              break;
+            case 6:
+              let hide = document.getElementsByTagName("img");
+              for(var i = 0; i < hide.length; i++){
+                hide[i].src = "";
+              }
             var animate = document.getElementById("animate");
-            animate.src = "http://digital.nightspublications.com/ar/images/robot-character_ANIME.gif";
-            var again = document.getElementsByTagName("button");
-            again.innerHTML = "Jouer encore?!";
+            animate.src = "./images/robot-character_ANIME.gif";
+            var again = document.getElementById("again");
+            again.innerHTML = "Jouer encore?";
           }
         }
       }
 
+      function rotate(id, amount) {
+       //var img = document.getElementById(id);
+       // img.class = "rotate90";
+      }
+
       $( function() {
-        $( "#image2" ).draggable({
+        $( "#image1" ).draggable({
           snap: ".ui-widget-image2",
           snapMode: "inner",
           opacity: 0.35,
           stop: function(event, ui){
             let target = document.getElementById("snaptarget2");
-            compare("#image2", ui, target);
+            compare(this, ui, target);
+          }
+        });
+      } );
+
+      $( function() {
+        $( "#image2").draggable({
+          snap: ".ui-widget-image4",
+          snapMode: "inner",
+          opacity: 0.35,
+          stop: function(event, ui){
+            let target = document.getElementById("snaptarget4");
+            compare(this, ui, target);
+          }
+        });
+      } );
+
+      $( function() {
+        $( "#image3" ).draggable({
+          snap: ".ui-widget-image5",
+          snapMode: "inner",
+          opacity: 0.35,
+          stop: function(event, ui){
+            let target = document.getElementById("snaptarget5");
+            compare(this, ui, target);
           }
         });
       } );
 
       $( function() {
         $( "#image4" ).draggable({
-          snap: ".ui-widget-image4",
-          snapMode: "inner",
-          opacity: 0.35,
-          stop: function(event, ui){
-            let target = document.getElementById("snaptarget4");
-            compare("#image4", ui, target);
-          }
-         });
-      } );
-
-      $( function() {
-        $( "#image5" ).draggable({
-          snap: ".ui-widget-image5",
-          snapMode: "inner",
-          opacity: 0.35,
-          stop: function(event, ui){
-            let target = document.getElementById("snaptarget5");
-            compare("#image5", ui, target);
-          }
-        });
-      } );
-
-      $( function() {
-        $( "#image6" ).draggable({
           snap: ".ui-widget-image6",
           snapMode: "inner",
           opacity: 0.35,
           stop: function(event, ui){
             let target = document.getElementById("snaptarget6");
-            compare("#image6", ui, target);
+            compare(this, ui, target);
           }
         });
       } );
 
       $( function() {
-        $( "#image8" ).draggable({
+        $( "#image5" ).draggable({
           snap: ".ui-widget-image8",
           snapMode: "inner",
           opacity: 0.35,
           stop: function(event, ui){
             let target = document.getElementById("snaptarget8");
-            compare("#image8", ui, target);
+            compare(this, ui, target);
           }
         });
       } );
@@ -125,65 +157,67 @@
     </div>
 
     <figure>
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_01.png"/>
+      <img src="./images/robot-character_EMPTY_01.png"/>
     </figure>
 
     <figure id="snaptarget2" class="ui-widget-image2">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_02.png"/>
+      <img src="./images/robot-character_EMPTY_02.png"/>
     </figure>
 
     <figure>
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_03.png"/>
+      <img src="./images/robot-character_EMPTY_03.png"/>
     </figure>
 
     <figure id="snaptarget4" class="ui-widget-image4">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_04.png"/>
+      <img src="./images/robot-character_EMPTY_04.png"/>
     </figure>
 
     <figure id="snaptarget5" class="ui-widget-image5">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_05.png"/>
+      <img src="./images/robot-character_EMPTY_05.png"/>
     </figure>
 
     <figure id="snaptarget6" class="ui-widget-image6">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_06.png"/>
+      <img src="./images/robot-character_EMPTY_06.png"/>
     </figure>
 
     <figure>
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_07.png"/>
+      <img src="./images/robot-character_EMPTY_07.png"/>
     </figure>
 
     <figure id="snaptarget8" class="ui-widget-image8">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_08.png"/>
+      <img src="./images/robot-character_EMPTY_08.png"/>
     </figure>
 
     <figure>
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_EMPTY_09.png"/>
+      <img src="./images/robot-character_EMPTY_09.png"/>
     </figure>
 
 
 
 
-    <figure id="image6" class="start1">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_06.png"/>
+
+
+    <figure id="image1" class="start">
+      <img id="img1" src="./images/robot-character_BCKG1.png" onclick='rotate("image1", 90)'/>
     </figure>
 
-    <figure id="image2" class="start2">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_02.png"/>
+    <figure id="image2" class="start" >
+      <img  id="img2" src="" onclick='rotate("image2", 90)'/>
     </figure>
 
-    <figure id="image8" class="start3">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_08.png"/>
+    <figure id="image3" class="start">
+      <img id="img3" src="" onclick='rotate("image3", 90)'/>
     </figure>
 
-    <figure id="image5" class="start4">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_05.png"/>
+    <figure id="image4" class="start">
+      <img id="img4" src="" onclick='rotate("image4", 90)'/>
     </figure>
 
-    <figure id="image4" class="start5">
-      <img src="http://digital.nightspublications.com/ar/images/robot-character_BCKG_04.png"/>
+    <figure id="image5" class="start">
+      <img id="img5" src="" onclick='rotate("image5", 90)'/>
     </figure>
 
-    <button style="font-size: 30px" onclick="location.href='file:///home/sgoedike/lighthouse/draggable-robot/draggable.html';">
+    <button id="again" style="font-size: 30px" onclick="location.href='./draggable.html';">
       Recommencer
     </button>
 
