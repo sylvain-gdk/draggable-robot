@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
 
     <style>
+      /* position first appearance of puzzle pieces */
       .start { position: fixed; left: 0; top: 432px; }
 
+      /* rotate puzzle pieces */
       .rotate90 {
         -webkit-transform: rotate(90deg);
         transform: rotate(90deg);
@@ -28,6 +30,7 @@
       }
 
 
+      /* distribute puzzle pieces in 3x3 */
       * { box-sizing: border-box; }
       body, figure { margin: 0; }
       img, button { display: block; width: 100%;}
@@ -40,6 +43,7 @@
         }
       }
 
+      /* reset/replay button */
       button {width: 50%; margin-top: 10px; margin-left: 25%; margin-right: 25%}
 
     </style>
@@ -47,15 +51,20 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="https://digital.nightspublications.com/js/jquery.ui.touch-punch.min.js"></script>
+
     <script>
 
+      /* counts until puzzle is completed */
       var count = 1;
 
+      /* compares position of one piece against target */
       function compare(id, ui, target){
         if((Math.floor(ui.position.top) == target.offsetTop || Math.ceil(ui.position.top) == target.offsetTop) && (Math.floor(ui.position.left) == target.offsetLeft || Math.ceil(ui.position.Left) == target.offsetLeft)){
+          /* adds 1 when in place */
           count++;
-          console.log(count);
+          /* disables drag when in place */
           $( id ).draggable( "disable" );
+          /* shows next piece of puzzle */
           switch(count){
             case 2:
               document.getElementById("img2").src = "./images/robot-character_BCKG2.png";
@@ -74,17 +83,28 @@
               for(var i = 0; i < hide.length; i++){
                 hide[i].src = "";
               }
+            /* shows animation when puzzle is completed */
             var animate = document.getElementById("animate");
             animate.src = "./images/robot-character_ANIME.gif";
             var again = document.getElementById("again");
-            again.innerHTML = "Jouer encore?";
+            again.innerHTML = "Play again?";
           }
         }
       }
 
-      function rotate(id, amount) {
-       //var img = document.getElementById(id);
-       // img.class = "rotate90";
+      /* rotates the piece of puzzle when clicked until in the right position */
+      function rotate(figId, imgId, amount) {
+        var newAmount;
+        if(amount != 360){
+          newAmount = amount + 90;
+          var figure = document.getElementById(figId);
+          var figString = 'start ui-draggable ui-draggable-handle rotate' + newAmount;
+          figure.setAttribute("class", figString);
+
+          var img = document.getElementById(imgId);
+          var imgString = 'rotate("' + figId + '", "' + imgId + '", ' + (newAmount) + ')';
+          img.setAttribute("onclick", imgString);
+        }
       }
 
       $( function() {
@@ -197,28 +217,28 @@
 
 
 
-    <figure id="image1" class="start">
-      <img id="img1" src="./images/robot-character_BCKG1.png" onclick='rotate("image1", 90)'/>
+    <figure id="image1" class="start rotate270">
+      <img id="img1" src="./images/robot-character_BCKG1.png" onclick='rotate("image1", "img1", 90)'/>
     </figure>
 
-    <figure id="image2" class="start" >
-      <img  id="img2" src="" onclick='rotate("image2", 90)'/>
+    <figure id="image2" class="start rotate90" >
+      <img  id="img2" src="" onclick='rotate("image2", "img2", 90)'/>
     </figure>
 
-    <figure id="image3" class="start">
-      <img id="img3" src="" onclick='rotate("image3", 90)'/>
+    <figure id="image3" class="start rotate180">
+      <img id="img3" src="" onclick='rotate("image3", "img3", 90)'/>
     </figure>
 
-    <figure id="image4" class="start">
-      <img id="img4" src="" onclick='rotate("image4", 90)'/>
+    <figure id="image4" class="start rotate270">
+      <img id="img4" src="" onclick='rotate("image4", "img4", 90)'/>
     </figure>
 
-    <figure id="image5" class="start">
-      <img id="img5" src="" onclick='rotate("image5", 90)'/>
+    <figure id="image5" class="start rotate180">
+      <img id="img5" src="" onclick='rotate("image5", "img5", 90)'/>
     </figure>
 
     <button id="again" style="font-size: 30px" onclick="location.href='./draggable.html';">
-      Recommencer
+      Reset
     </button>
 
   </body>
