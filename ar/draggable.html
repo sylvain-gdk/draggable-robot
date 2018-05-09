@@ -10,8 +10,8 @@
       /* position first appearance of puzzle pieces */
       .start {
         position: fixed;
-        left: 50px;
-        top: 1000px;
+        left: 0px;
+        top: 300px;
       }
 
       /* rotate puzzle pieces */
@@ -59,7 +59,7 @@
     <script src="https://digital.nightspublications.com/js/jquery.ui.touch-punch.min.js"></script>
 
     <script>
-      /* counts until puzzle is completed */
+      // counts until puzzle is completed
       var count = 1;
 
       window.addEventListener("load", function(){
@@ -70,19 +70,31 @@
         rotate('image5', 'img5', random());
       });
 
+      // random degree for rotation
       function random(){
         var degree = [90, 180, 270];
         return degree[Math.floor(Math.random()*degree.length)];
       }
 
-      /* compares position of one piece against target */
+      function tolerance(origin, target){
+        var ok = false;
+        var check1 = origin - target;
+        var check2 = target - origin;
+
+        if((check1 >= 0 && check1 <=1) || (check2 >= 0 && check2 <= 1)){
+          ok = true
+        }
+        return ok;
+      }
+
+      // compares position of one piece against target
       function compare(id, ui, target){
-        if((Math.floor(ui.position.top) == target.offsetTop || Math.ceil(ui.position.top) == target.offsetTop) && (Math.floor(ui.position.left) == target.offsetLeft || Math.ceil(ui.position.Left) == target.offsetLeft)){
-          /* adds 1 when puzzle piece is in place */
+        if(tolerance(ui.position.top, target.offsetTop) && tolerance(ui.position.left, target.offsetLeft)){
+          // adds 1 when puzzle piece is in place
           count++;
-          /* disables drag when puzzle piece is in place */
+          // disables drag when puzzle piece is in place
           $( id ).draggable( "disable" );
-          /* shows next piece of puzzle */
+          // shows next piece of puzzle
           var img = 'img' + count;
           if(count < 6){
             var imgId = document.getElementById(img);
@@ -92,7 +104,7 @@
             for(var i = 0; i < hide.length; i++){
               hide[i].style.display = "none";
             }
-            /* shows animation when puzzle is completed */
+            // shows animation when puzzle is completed
             var animate = document.getElementById("animate");
             animate.style.display = 'block';
             var again = document.getElementById("again");
@@ -101,20 +113,22 @@
         }
       }
 
-      /* rotates the piece of puzzle when clicked until in the right position */
+      // rotates the piece of puzzle when clicked until in the right position
       function rotate(figId, imgId, amount) {
         var figure = document.getElementById(figId);
         var img = document.getElementById(imgId);
-        var translateString = 'translate(' + imgId.width/2 + ', ' + imgId.height/2 + ')';
+        var imgWidth = img.clientWidth/2;
+        var imgHeight = img.clientHeight/2;
+        var translateString = 'translate(' + imgWidth + ', ' + imgHeight + ')';
         var figString = 'start ui-draggable ui-draggable-handle rotate' + amount + ' ' + translateString;
         figure.setAttribute("class", figString);
         var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + amount + ')';
-        img.addEventListener("click", function(event){
+        img.addEventListener("touchstart", function(event){
           rotate(figId, imgId, amount+90);
           event.preventDefault();
         });
       }
-      /* calls the draggable puzzle pieces */
+      // calls the draggable puzzle pieces
       $( function() {
         $( "#image1" ).draggable({
           snap: ".ui-widget-image2",
@@ -242,7 +256,7 @@
       <img id="img5" src="./images/robot-character_BCKG5.png" style="display: none"/>
     </figure>
 
-    <button id="again" style="font-size: 50px" onclick="location.href='./draggable.html'">
+    <button id="again" style="font-size: 30px" onclick="location.href='./draggable.html'">
       Reset
     </button>
 
