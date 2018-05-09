@@ -62,6 +62,19 @@
       /* counts until puzzle is completed */
       var count = 1;
 
+      window.addEventListener("load", function(){
+        rotate('image1', 'img1', random());
+        rotate('image2', 'img2', random());
+        rotate('image3', 'img3', random());
+        rotate('image4', 'img4', random());
+        rotate('image5', 'img5', random());
+      });
+
+      function random(){
+        var degree = [90, 180, 270];
+        return degree[Math.floor(Math.random()*degree.length)];
+      }
+
       /* compares position of one piece against target */
       function compare(id, ui, target){
         if((Math.floor(ui.position.top) == target.offsetTop || Math.ceil(ui.position.top) == target.offsetTop) && (Math.floor(ui.position.left) == target.offsetLeft || Math.ceil(ui.position.Left) == target.offsetLeft)){
@@ -70,10 +83,10 @@
           /* disables drag when puzzle piece is in place */
           $( id ).draggable( "disable" );
           /* shows next piece of puzzle */
-          var images = 'img' + count;
+          var img = 'img' + count;
           if(count < 6){
-            images = document.getElementById(images);
-            images.style.display = "block";;
+            var imgId = document.getElementById(img);
+            imgId.style.display = "block";
           }else{
             let hide = document.getElementsByTagName("img");
             for(var i = 0; i < hide.length; i++){
@@ -90,19 +103,17 @@
 
       /* rotates the piece of puzzle when clicked until in the right position */
       function rotate(figId, imgId, amount) {
-        var newAmount;
-        if(amount != 360){
-          newAmount = amount + 90;
-          var figure = document.getElementById(figId);
-          var img = document.getElementById(imgId);
-          var translateString = 'translate(' + img.width/2 + ', ' + img.height/2 + ')';
-          var figString = 'start ui-draggable ui-draggable-handle rotate' + newAmount + ' ' + translateString;
-          figure.setAttribute("class", figString);
-          var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + (newAmount) + ')';
-          img.setAttribute("onclick", rotateString);
-        }
+        var figure = document.getElementById(figId);
+        var img = document.getElementById(imgId);
+        var translateString = 'translate(' + imgId.width/2 + ', ' + imgId.height/2 + ')';
+        var figString = 'start ui-draggable ui-draggable-handle rotate' + amount + ' ' + translateString;
+        figure.setAttribute("class", figString);
+        var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + amount + ')';
+        img.addEventListener("click", function(event){
+          rotate(figId, imgId, amount+90);
+          event.preventDefault();
+        });
       }
-
       /* calls the draggable puzzle pieces */
       $( function() {
         $( "#image1" ).draggable({
@@ -211,24 +222,24 @@
       <img src="./images/robot-character_EMPTY_09.png"/>
     </figure>
 
-    <figure id="image1" class="start rotate270">
-      <img id="img1" src="./images/robot-character_BCKG1.png" onclick='rotate("image1", "img1", 90)'/>
+    <figure id="image1" class="start">
+      <img id="img1" src="./images/robot-character_BCKG1.png"/>
     </figure>
 
-    <figure id="image2" class="start rotate90" >
-      <img  id="img2" src="./images/robot-character_BCKG2.png" style="display: none" onclick='rotate("image2", "img2", 90)'/>
+    <figure id="image2" class="start" >
+      <img  id="img2" src="./images/robot-character_BCKG2.png" style="display: none"/>
     </figure>
 
-    <figure id="image3" class="start rotate180">
-      <img id="img3" src="./images/robot-character_BCKG3.png" style="display: none" onclick='rotate("image3", "img3", 90)'/>
+    <figure id="image3" class="start">
+      <img id="img3" src="./images/robot-character_BCKG3.png" style="display: none"/>
     </figure>
 
-    <figure id="image4" class="start rotate270">
-      <img id="img4" src="./images/robot-character_BCKG4.png" style="display: none" onclick='rotate("image4", "img4", 90)'/>
+    <figure id="image4" class="start">
+      <img id="img4" src="./images/robot-character_BCKG4.png" style="display: none"/>
     </figure>
 
-    <figure id="image5" class="start rotate180">
-      <img id="img5" src="./images/robot-character_BCKG5.png" style="display: none" onclick='rotate("image5", "img5", 90)'/>
+    <figure id="image5" class="start">
+      <img id="img5" src="./images/robot-character_BCKG5.png" style="display: none"/>
     </figure>
 
     <button id="again" style="font-size: 50px" onclick="location.href='./draggable.html'">
