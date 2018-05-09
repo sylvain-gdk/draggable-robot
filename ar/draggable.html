@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Draggable - Default functionality</title>
+    <title>Draggable Robot</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
-
     <style>
       /* position first appearance of puzzle pieces */
-      .start { position: fixed; left: 0; top: 432px; }
+      .start {
+        position: fixed;
+        left: 50px;
+        top: 1000px;
+      }
 
       /* rotate puzzle pieces */
       .rotate90 {
@@ -30,9 +33,9 @@
       }
 
 
-      /* distribute puzzle pieces in 3x3 */
+      /* distribute puzzle pieces as 3x3 */
       * { box-sizing: border-box; }
-      body, figure { margin: 0; }
+      body, figure, div { margin: 0; }
       img, button { display: block; width: 100%;}
 
       @media (min-width: 12em) {
@@ -48,44 +51,37 @@
 
     </style>
 
+  </head>
+
+  <body>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="https://digital.nightspublications.com/js/jquery.ui.touch-punch.min.js"></script>
 
     <script>
-
       /* counts until puzzle is completed */
       var count = 1;
 
       /* compares position of one piece against target */
       function compare(id, ui, target){
         if((Math.floor(ui.position.top) == target.offsetTop || Math.ceil(ui.position.top) == target.offsetTop) && (Math.floor(ui.position.left) == target.offsetLeft || Math.ceil(ui.position.Left) == target.offsetLeft)){
-          /* adds 1 when in place */
+          /* adds 1 when puzzle piece is in place */
           count++;
-          /* disables drag when in place */
+          /* disables drag when puzzle piece is in place */
           $( id ).draggable( "disable" );
           /* shows next piece of puzzle */
-          switch(count){
-            case 2:
-              document.getElementById("img2").src = "./images/robot-character_BCKG2.png";
-              break;
-            case 3:
-              document.getElementById("img3").src = "./images/robot-character_BCKG3.png";
-              break;
-            case 4:
-              document.getElementById("img4").src = "./images/robot-character_BCKG4.png";
-              break;
-            case 5:
-              document.getElementById("img5").src = "./images/robot-character_BCKG5.png";
-              break;
-            case 6:
-              let hide = document.getElementsByTagName("img");
-              for(var i = 0; i < hide.length; i++){
-                hide[i].src = "";
-              }
+          var images = 'img' + count;
+          if(count < 6){
+            images = document.getElementById(images);
+            images.style.display = "block";;
+          }else{
+            let hide = document.getElementsByTagName("img");
+            for(var i = 0; i < hide.length; i++){
+              hide[i].style.display = "none";
+            }
             /* shows animation when puzzle is completed */
             var animate = document.getElementById("animate");
-            animate.src = "./images/robot-character_ANIME.gif";
+            animate.style.display = 'block';
             var again = document.getElementById("again");
             again.innerHTML = "Play again?";
           }
@@ -98,20 +94,22 @@
         if(amount != 360){
           newAmount = amount + 90;
           var figure = document.getElementById(figId);
-          var figString = 'start ui-draggable ui-draggable-handle rotate' + newAmount;
-          figure.setAttribute("class", figString);
-
           var img = document.getElementById(imgId);
-          var imgString = 'rotate("' + figId + '", "' + imgId + '", ' + (newAmount) + ')';
-          img.setAttribute("onclick", imgString);
+          var translateString = 'translate(' + img.width/2 + ', ' + img.height/2 + ')';
+          var figString = 'start ui-draggable ui-draggable-handle rotate' + newAmount + ' ' + translateString;
+          figure.setAttribute("class", figString);
+          var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + (newAmount) + ')';
+          img.setAttribute("onclick", rotateString);
         }
       }
 
+      /* calls the draggable puzzle pieces */
       $( function() {
         $( "#image1" ).draggable({
           snap: ".ui-widget-image2",
           snapMode: "inner",
           opacity: 0.35,
+          containment: 'parent',
           stop: function(event, ui){
             let target = document.getElementById("snaptarget2");
             compare(this, ui, target);
@@ -124,6 +122,7 @@
           snap: ".ui-widget-image4",
           snapMode: "inner",
           opacity: 0.35,
+          containment: "body",
           stop: function(event, ui){
             let target = document.getElementById("snaptarget4");
             compare(this, ui, target);
@@ -136,6 +135,7 @@
           snap: ".ui-widget-image5",
           snapMode: "inner",
           opacity: 0.35,
+          containment: "body",
           stop: function(event, ui){
             let target = document.getElementById("snaptarget5");
             compare(this, ui, target);
@@ -148,6 +148,7 @@
           snap: ".ui-widget-image6",
           snapMode: "inner",
           opacity: 0.35,
+          containment: "body",
           stop: function(event, ui){
             let target = document.getElementById("snaptarget6");
             compare(this, ui, target);
@@ -160,6 +161,7 @@
           snap: ".ui-widget-image8",
           snapMode: "inner",
           opacity: 0.35,
+          containment: "body",
           stop: function(event, ui){
             let target = document.getElementById("snaptarget8");
             compare(this, ui, target);
@@ -168,12 +170,9 @@
       } );
 
     </script>
-  </head>
-
-  <body>
 
     <div>
-      <img id = "animate" src=""/>
+      <img id = "animate" src="./images/robot-character_ANIME.gif" style='display: none'/>
     </div>
 
     <figure>
@@ -212,32 +211,27 @@
       <img src="./images/robot-character_EMPTY_09.png"/>
     </figure>
 
-
-
-
-
-
     <figure id="image1" class="start rotate270">
       <img id="img1" src="./images/robot-character_BCKG1.png" onclick='rotate("image1", "img1", 90)'/>
     </figure>
 
     <figure id="image2" class="start rotate90" >
-      <img  id="img2" src="" onclick='rotate("image2", "img2", 90)'/>
+      <img  id="img2" src="./images/robot-character_BCKG2.png" style="display: none" onclick='rotate("image2", "img2", 90)'/>
     </figure>
 
     <figure id="image3" class="start rotate180">
-      <img id="img3" src="" onclick='rotate("image3", "img3", 90)'/>
+      <img id="img3" src="./images/robot-character_BCKG3.png" style="display: none" onclick='rotate("image3", "img3", 90)'/>
     </figure>
 
     <figure id="image4" class="start rotate270">
-      <img id="img4" src="" onclick='rotate("image4", "img4", 90)'/>
+      <img id="img4" src="./images/robot-character_BCKG4.png" style="display: none" onclick='rotate("image4", "img4", 90)'/>
     </figure>
 
     <figure id="image5" class="start rotate180">
-      <img id="img5" src="" onclick='rotate("image5", "img5", 90)'/>
+      <img id="img5" src="./images/robot-character_BCKG5.png" style="display: none" onclick='rotate("image5", "img5", 90)'/>
     </figure>
 
-    <button id="again" style="font-size: 30px" onclick="location.href='./draggable.html';">
+    <button id="again" style="font-size: 50px" onclick="location.href='./draggable.html'">
       Reset
     </button>
 
