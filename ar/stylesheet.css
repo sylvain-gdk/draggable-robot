@@ -29,10 +29,10 @@
       body, figure, div { margin: 0; }
       img { display: block; width: 100%; }
 
-      /* reset/replay button */
-      button {
-        display: block;
-        margin-top: 10px;
+      img.intro {
+        position: inline;
+        max-width: 200px;
+        margin: auto;
       }
 
       h1, h2, button {
@@ -47,10 +47,17 @@
         font-size: 30px;
         margin-left: auto;
         margin-right: auto;
-        width: 12em;
+        width: 14em;
       }
 
-      @media (min-width: 18em) {
+      /* reset/replay button */
+      button {
+        display: block;
+        margin-top: 20px;
+        width: 8em;
+      }
+
+      @media (min-width: 30em) {
         figure {
           display: block;
           float: left;
