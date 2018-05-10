@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Draggable Robot</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
     <style>
       /* position first appearance of puzzle pieces */
       .start {
@@ -54,10 +52,8 @@
   </head>
 
   <body>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-    <script src="https://digital.nightspublications.com/js/jquery.ui.touch-punch.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js""></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
       // counts until puzzle is completed
       var count = 1;
@@ -123,7 +119,7 @@
         var figString = 'start ui-draggable ui-draggable-handle rotate' + amount + ' ' + translateString;
         figure.setAttribute("class", figString);
         var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + amount + ')';
-        img.addEventListener("touchstart", function(event){
+        img.addEventListener("click", function(event){
           rotate(figId, imgId, amount+90);
           event.preventDefault();
         });
