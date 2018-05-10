@@ -17,8 +17,7 @@
         if(screen.width > 1000){
           window.open("./draggable.html","POPUP","width=" + windowWidth +",height="+ windowHeight +",left="+ xPos +",top=" + yPos);
           }else{
-            var src = document.querySelector('button');
-            src.setAttribute('src', './draggable.html');
+            location.href='./draggable.html';
           }
       }
     </script>
@@ -26,7 +25,7 @@
       <img class="intro" src="./images/robot-character_ANIME.gif">
       <h2>INSTRUCTIONS</h2>
       <p>Tap/click the puzzle piece to rotate<br><br>Move the puzzle piece in position on top of the template<br><br>Make sure it's aligned so that the next puzzle piece may appear
-      </p>
+      <br></p>
 
       <button onclick='start()'>Start</button>
   </body>

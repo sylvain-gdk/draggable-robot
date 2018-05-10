@@ -44,20 +44,21 @@
       }
 
       p, button {
-        font-size: 30px;
+        font-size: 20px;
         margin-left: auto;
         margin-right: auto;
-        width: 14em;
+        width: 10em;
       }
 
       /* reset/replay button */
       button {
+        font-size: 30px;
         display: block;
-        margin-top: 20px;
+        margin-top: 10px;
         width: 8em;
       }
 
-      @media (min-width: 30em) {
+      @media (min-width: 12em) {
         figure {
           display: block;
           float: left;
