@@ -119,7 +119,7 @@
         var figString = 'start ui-draggable ui-draggable-handle rotate' + amount + ' ' + translateString;
         figure.setAttribute("class", figString);
         var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + amount + ')';
-        img.addEventListener("click", function(event){
+        img.addEventListener("touchstart", function(event){
           rotate(figId, imgId, amount+90);
           event.preventDefault();
         });
