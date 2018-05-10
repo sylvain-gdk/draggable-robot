@@ -3,52 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Draggable Robot</title>
-    <style>
-      /* position first appearance of puzzle pieces */
-      .start {
-        position: fixed;
-        left: 0px;
-        top: 300px;
-      }
-
-      /* rotate puzzle pieces */
-      .rotate90 {
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
-      }
-      .rotate180 {
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-      }
-      .rotate270 {
-        -webkit-transform: rotate(270deg);
-        transform: rotate(270deg);
-      }
-      .rotate360 {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-      }
-
-
-      /* distribute puzzle pieces as 3x3 */
-      * { box-sizing: border-box; }
-      body, figure, div { margin: 0; }
-      img, button { display: block; width: 100%;}
-
-      @media (min-width: 12em) {
-        figure {
-          display: block;
-          float: left;
-          width: 33%;
-        }
-      }
-
-      /* reset/replay button */
-      button {width: 50%; margin-top: 10px; margin-left: 25%; margin-right: 25%}
-
-    </style>
-
+    <title>Robot Puzzle</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
   </head>
 
   <body>
@@ -252,9 +208,7 @@
       <img id="img5" src="./images/robot-character_BCKG5.png" style="display: none"/>
     </figure>
 
-    <button id="again" style="font-size: 30px" onclick="location.href='./draggable.html'">
-      Reset
-    </button>
+    <button id="again" onclick="location.href='./draggable.html'" >Reset</button>
 
   </body>
 </html>

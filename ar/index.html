@@ -1,13 +1,32 @@
 <!doctype html>
 <html>
-<body>
-<script>
-    var windowWidth = 700;
-    var windowHeight = 1000;
-    var xPos = (screen.width/2) - (windowWidth/2);
-    var yPos = (screen.height/2) - (windowHeight/2);
-    window.open("./draggable.html","POPUP","width="
-    + windowWidth+",height="+windowHeight +",left="+xPos+",top="+yPos);
-</script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robot Puzzle - Instructions</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
+  <body>
+    <script>
+      var windowWidth = 700;
+      var windowHeight = 1000;
+      var xPos = (screen.width/2) - (windowWidth/2);
+      var yPos = (screen.height/2) - (windowHeight/2);
+
+      function start(){
+        if(screen.width > 1000){
+          window.open("./draggable.html","POPUP","width=" + windowWidth +",height="+ windowHeight +",left="+ xPos +",top=" + yPos);
+          }else{
+            var src = document.querySelector('button');
+            src.setAttribute('src', './draggable.html');
+          }
+      }
+    </script>
+      <h1>Robot Puzzle</h1>
+      <h2>INSTRUCTIONS</h2>
+      <p>Tap/click the puzzle piece to rotate<br><br>Move the puzzle piece in position on top of the template<br><br>Make sure it's aligned so that the next puzzle piece may appear
+      </p>
+
+      <button onclick='start()'>Start</button>
+  </body>
 </html>
