@@ -58,7 +58,7 @@ function compare(id, ui, target){
       image.setAttribute('src', src);
       body.appendChild(figure);
       figure.appendChild(image);
-      image.addEventListener("touchstart", function(event){
+      image.addEventListener("_touchStart", function(event){
         rotate(fig, img, rotation+90);
       });
       $( figure ).draggable({
@@ -94,7 +94,7 @@ function rotate(figId, imgId, amount) {
   var figString = 'start ui-draggable ui-draggable-handle rotate' + amount + ' ' + translateString;
   figure.setAttribute("class", figString);
   var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + amount + ')';
-  img.addEventListener("touchstart", function(event){
+  img.addEventListener("_touchStart", function(event){
     rotate(figId, imgId, amount+90);
   });
 }
