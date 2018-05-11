@@ -14,10 +14,6 @@ function openWindow(){
 // counts until puzzle is completed
 var count = 1;
 
-window.addEventListener("load", function(){
-  rotate('image1', 'img1', random());
-});
-
 // random degree for rotation
 function random(){
   var degree = [90, 180, 270];
