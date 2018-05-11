@@ -5,28 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Robot Puzzle - Instructions</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script type="text/javascript" src="./robot.js"></script>
   </head>
   <body>
-    <script>
-      var windowWidth = 700;
-      var windowHeight = 1000;
-      var xPos = (screen.width/2) - (windowWidth/2);
-      var yPos = (screen.height/2) - (windowHeight/2);
+    <h1>Robot Puzzle</h1>
+    <img class="intro" src="./images/robot-character.jpg">
+    <h2>INSTRUCTIONS</h2>
+    <p>Tap/click the puzzle piece to rotate<br><br>Move the puzzle piece in position on top of the template<br><br>Make sure it's aligned so that the next puzzle piece may appear
+    <br></p>
 
-      function start(){
-        if(screen.width > 1000){
-          window.open("./draggable.html","POPUP","width=" + windowWidth +",height="+ windowHeight +",left="+ xPos +",top=" + yPos);
-          }else{
-            location.href='./draggable.html';
-          }
-      }
-    </script>
-      <h1>Robot Puzzle</h1>
-      <img class="intro" src="./images/robot-character_ANIME.gif">
-      <h2>INSTRUCTIONS</h2>
-      <p>Tap/click the puzzle piece to rotate<br><br>Move the puzzle piece in position on top of the template<br><br>Make sure it's aligned so that the next puzzle piece may appear
-      <br></p>
-
-      <button onclick='start()'>Start</button>
+    <button onclick='openWindow()'>Start</button>
   </body>
 </html>
