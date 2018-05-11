@@ -1,3 +1,15 @@
+// counts until puzzle is completed
+var count = 1;
+
+// returns true if mobile device
+function touchOrClick(){
+  if(screen.width > 1000){
+    return 'click';
+  }else{
+    return 'touchstart';
+  }
+};
+
 // opens a separate smaller window when on large screen
 function openWindow(){
   var windowWidth = 700;
@@ -10,9 +22,6 @@ function openWindow(){
     location.href='./draggable.html';
   }
 }
-
-// counts until puzzle is completed
-var count = 1;
 
 // random degree for rotation
 function random(){
@@ -54,7 +63,7 @@ function compare(id, ui, target){
       image.setAttribute('src', src);
       body.appendChild(figure);
       figure.appendChild(image);
-      image.addEventListener("touchstart", function(event){
+      image.addEventListener(touchOrClick(), function(event){
         rotate(fig, img, rotation+90);
       });
       $( figure ).draggable({
@@ -90,7 +99,7 @@ function rotate(figId, imgId, amount) {
   var figString = 'start ui-draggable ui-draggable-handle rotate' + amount + ' ' + translateString;
   figure.setAttribute("class", figString);
   var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + amount + ')';
-  img.addEventListener("touchstart", function(event){
+  img.addEventListener(touchOrClick(), function(event){
     rotate(figId, imgId, amount+90);
   });
 }
