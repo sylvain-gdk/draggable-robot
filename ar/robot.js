@@ -6,9 +6,9 @@ function openWindow(){
   var yPos = (screen.height/2) - (windowHeight/2);
   if(screen.width > 1000){
     window.open("./draggable.html","POPUP","width=" + windowWidth +",height="+ windowHeight +",left="+ xPos +",top=" + yPos);
-    }else{
-      location.href='./draggable.html';
-    }
+  }else{
+    location.href='./draggable.html';
+  }
 }
 
 // counts until puzzle is completed
@@ -16,16 +16,14 @@ var count = 1;
 
 window.addEventListener("load", function(){
   rotate('image1', 'img1', random());
-  rotate('image2', 'img2', random());
-  rotate('image3', 'img3', random());
-  rotate('image4', 'img4', random());
-  rotate('image5', 'img5', random());
 });
+
 // random degree for rotation
 function random(){
   var degree = [90, 180, 270];
   return degree[Math.floor(Math.random()*degree.length)];
 }
+
 function tolerance(origin, target){
   var ok = false;
   var check1 = origin - target;
@@ -44,19 +42,45 @@ function compare(id, ui, target){
     $( id ).draggable( "disable" );
     // shows next piece of puzzle
     var img = 'img' + count;
+    var fig = '#image' + count;
+    var widget = '.ui-widget-image' + count;
+    var snaptarget = 'snaptarget' + count;
+    var body = document.querySelector('body');
+    var rotation = random();
+    var figClass = 'start rotate' + rotation;
     if(count < 6){
-      var imgId = document.getElementById(img);
-      imgId.style.display = "block";
+      let figure = document.createElement('figure');
+      figure.setAttribute('id', fig);
+      figure.setAttribute('class', figClass);
+      let image = document.createElement('img');
+      let src = './images/robot-character_drag' + count + '.png';
+      image.setAttribute('id', img);
+      image.setAttribute('src', src);
+      body.appendChild(figure);
+      figure.appendChild(image);
+      image.addEventListener("click", function(event){
+        rotate(fig, img, rotation+90);
+      });
+      $( figure ).draggable({
+        snap: widget,
+        snapMode: "inner",
+        opacity: 0.35,
+        containment: 'body',
+        stop: function(event, ui){
+          let target = document.getElementById(snaptarget);
+          compare(this, ui, target);
+        }
+      });
     }else{
-      let hide = document.getElementsByTagName("img");
-      for(var i = 0; i < hide.length; i++){
-        hide[i].style.display = "none";
+      let hideImg = document.getElementsByTagName("img");
+      for(var i = 0; i < hideImg.length; i++){
+        hideImg[i].style.display = "none";
       }
       // shows animation when puzzle is completed
       var animate = document.getElementById("animate");
       animate.style.display = 'block';
-      var again = document.getElementById("again");
-      again.innerHTML = "Play again?";
+      var play = document.getElementById("play");
+      play.innerHTML = "Play again?";
     }
   }
 }
@@ -72,6 +96,5 @@ function rotate(figId, imgId, amount) {
   var rotateString = 'rotate("' + figId + '", "' + imgId + '", ' + amount + ')';
   img.addEventListener("click", function(event){
     rotate(figId, imgId, amount+90);
-    event.preventDefault();
   });
 }

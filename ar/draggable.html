@@ -10,133 +10,57 @@
     <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
     <script src="./jquery.ui.touch-punch.min.js"></script>
   </head>
-
   <body>
     <script>
-      // calls the draggable puzzle pieces
+      // calls the 1st draggable puzzle piece
       $( function() {
         $( "#image1" ).draggable({
-          snap: ".ui-widget-image2",
+          snap: ".ui-widget-image1",
           snapMode: "inner",
           opacity: 0.35,
           containment: 'body',
           stop: function(event, ui){
-            let target = document.getElementById("snaptarget2");
-            compare(this, ui, target);
-          }
-        });
-      } );
-      $( function() {
-        $( "#image2").draggable({
-          snap: ".ui-widget-image4",
-          snapMode: "inner",
-          opacity: 0.35,
-          containment: "body",
-          stop: function(event, ui){
-            let target = document.getElementById("snaptarget4");
-            compare(this, ui, target);
-          }
-        });
-      } );
-      $( function() {
-        $( "#image3" ).draggable({
-          snap: ".ui-widget-image5",
-          snapMode: "inner",
-          opacity: 0.35,
-          containment: "body",
-          stop: function(event, ui){
-            let target = document.getElementById("snaptarget5");
-            compare(this, ui, target);
-          }
-        });
-      } );
-      $( function() {
-        $( "#image4" ).draggable({
-          snap: ".ui-widget-image6",
-          snapMode: "inner",
-          opacity: 0.35,
-          containment: "body",
-          stop: function(event, ui){
-            let target = document.getElementById("snaptarget6");
-            compare(this, ui, target);
-          }
-        });
-      } );
-      $( function() {
-        $( "#image5" ).draggable({
-          snap: ".ui-widget-image8",
-          snapMode: "inner",
-          opacity: 0.35,
-          containment: "body",
-          stop: function(event, ui){
-            let target = document.getElementById("snaptarget8");
+            let target = document.getElementById("snaptarget1");
             compare(this, ui, target);
           }
         });
       } );
     </script>
-
     <div>
       <img id = "animate" src="./images/robot-character_ANIME.gif" style='display: none'/>
     </div>
-
+     <figure id="image1" class="start">
+      <img id="img1" src="./images/robot-character_drag1.png"/>
+    </figure>
     <figure>
       <img src="./images/robot-character_target1.png"/>
     </figure>
-
-    <figure id="snaptarget2" class="ui-widget-image2">
+    <figure id="snaptarget1" class="ui-widget-image1">
       <img src="./images/robot-character_target2.png"/>
     </figure>
-
     <figure>
       <img src="./images/robot-character_target3.png"/>
     </figure>
-
-    <figure id="snaptarget4" class="ui-widget-image4">
+    <figure id="snaptarget2" class="ui-widget-image2">
       <img src="./images/robot-character_target4.png"/>
     </figure>
-
-    <figure id="snaptarget5" class="ui-widget-image5">
+    <figure id="snaptarget3" class="ui-widget-image3">
       <img src="./images/robot-character_target5.png"/>
     </figure>
-
-    <figure id="snaptarget6" class="ui-widget-image6">
+    <figure id="snaptarget4" class="ui-widget-image4">
       <img src="./images/robot-character_target6.png"/>
     </figure>
-
     <figure>
       <img src="./images/robot-character_target7.png"/>
     </figure>
-
-    <figure id="snaptarget8" class="ui-widget-image8">
+    <figure id="snaptarget5" class="ui-widget-image5">
       <img src="./images/robot-character_target8.png"/>
     </figure>
-
     <figure>
       <img src="./images/robot-character_target9.png"/>
     </figure>
-
-    <figure id="image1" class="start">
-      <img id="img1" src="./images/robot-character_drag2.png"/>
-    </figure>
-
-    <figure id="image2" class="start" >
-      <img  id="img2" src="./images/robot-character_drag4.png" style="display: none"/>
-    </figure>
-
-    <figure id="image3" class="start">
-      <img id="img3" src="./images/robot-character_drag5.png" style="display: none"/>
-    </figure>
-
-    <figure id="image4" class="start">
-      <img id="img4" src="./images/robot-character_drag6.png" style="display: none"/>
-    </figure>
-
-    <figure id="image5" class="start">
-      <img id="img5" src="./images/robot-character_drag8.png" style="display: none"/>
-    </figure>
-
-    <button id="play" onclick="location.href='./draggable.html'" >Reset</button>
-
+    <div>
+       <button id="play" onclick="location.href='./draggable.html'" >Reset</button>
+    </div>
   </body>
 </html>
