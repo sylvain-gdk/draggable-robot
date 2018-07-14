@@ -10,16 +10,16 @@ A small puzzle made with JQuery Draggable and Snap. It was mainly created to exp
 
 ## Getting Started
 
-[Try it here!](https://sylvain-gdk.github.io/draggable-robot/ar/index.html
+[Try it here!](https://sylvain-gdk.github.io/draggable-robot/index.html
 )
 
 ## Screenshots
 
 #### Main screen
-!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/ar/blob/master/docs/start.png)
+!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/blob/master/docs/start.png)
 
 #### Playing the game
-!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/ar/blob/master/docs/ingame)
+!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/blob/master/docs/ingame)
 
 #### You Win!
-!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/ar/blob/master/docs/win.png)
+!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/blob/master/docs/win.png)
