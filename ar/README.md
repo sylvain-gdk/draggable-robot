@@ -19,7 +19,7 @@ A small puzzle made with JQuery Draggable and Snap. It was mainly created to exp
 !["starting.png"](https://github.com/sylvain-gdk/draggable-robot/blob/master/docs/start.png)
 
 #### Playing the game
-!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/blob/master/docs/ingame)
+!["starting.png"](https://github.com/sylvain-gdk/draggable-robot/blob/master/docs/ingame.png)
 
 #### You Win!
 !["starting.png"](https://github.com/sylvain-gdk/draggable-robot/blob/master/docs/win.png)
