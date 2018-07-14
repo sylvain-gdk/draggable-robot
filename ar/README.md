@@ -10,7 +10,7 @@ A small puzzle made with JQuery Draggable and Snap. It was mainly created to exp
 
 ## Getting Started
 
-[Try it here!](https://sylvain-gdk.github.io/draggable-robot/index.html
+[Try it here!](https://sylvain-gdk.github.io/draggable-robot/ar/index.html
 )
 
 ## Screenshots
